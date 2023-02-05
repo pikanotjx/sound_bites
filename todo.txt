@@ -1,0 +1,6 @@
+1. Homepage fill in
+2. Registration System
+3. Log In System
+4. Game Countdown timer
+5. Game player
+6. Points calculator

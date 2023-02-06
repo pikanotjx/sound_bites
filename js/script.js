@@ -13,6 +13,7 @@ document.onreadystatechange = function() {
 };
 
 $(document).ready(function(){
+    var currentAccount = null;
     // navigation bar - show menu on click
     var navbarHeight = $("header").height();
 
@@ -23,48 +24,102 @@ $(document).ready(function(){
     // !- navigation bar - show menu on click
 
     // accessing database
-    // 
     const APIKEY = "63df95363bc6b255ed0c46aa";
-    $("#update-user-container").hide();
-    $("#add-update-msg").hide();
-    
-    // create submit form listener
-    $("#register-submit").on("click", function(e){
-        e.preventDefault();
+    $("#register-account").on("click", function(event){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var dateJoined = new Date();
 
-        let username = $("#username").val();
-        let password = $("#password").val();
-
-        let jsondata = {
-            "username": username,
-            "password": password
-        };
-
-        let settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://soundbites-8ad9.restdb.io/rest/users",
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": APIKEY,
-                "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata),
-            "beforeSend": function(){
-                $("#register-submit").html("Loading...");
-                $("#register-submit").prop("disabled", true);
-                console.log(`${username}, ${password}`);
-            }
+        if (username === "" || password === "") {
+            alert("Please fill in all fields");
         }
 
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://soundbites-8ad9.restdb.io/rest/accounts",
+            "method": "GET",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": APIKEY,
+              "cache-control": "no-cache"
+            }
+        }
+          
+        $.ajax(settings).done(function (response) {
+            for(let account of response) {
+                if (username === account.Username) {
+                    alert("Username already taken");
+                }
+            }
+        });
+
+        var jsondata = {"Username": username,"Password": password, "DateJoined": dateJoined, "HighScore": 0, "LatestScore": 0};
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://soundbites-8ad9.restdb.io/rest/accounts",
+            "method": "POST",
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+                },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+            }
         $.ajax(settings).done(function (response) {
             console.log(response);
+        });
 
-            $("#register-submit").prop("disabled", false);
-            $("#add-update-msg").shouw().fadeOut(3000);
-            getUser();
+        alert("Registration Successful! Proceed to Login!")
+    });
+
+    $("#login-account").on("click", function(event){
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        if (username === "" || password === "") {
+            alert("Please fill in all fields");
+        }
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://soundbites-8ad9.restdb.io/rest/accounts",
+            "method": "GET",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": APIKEY,
+              "cache-control": "no-cache"
+            }
+        }
+          
+        $.ajax(settings).done(function (response) {
+            for(let account of response) {
+                if (username === account.Username) {
+                    if (password === account.Password) {
+                        currentAccount = account;
+                        alert("Login Successful!");
+                        return;
+                    } 
+                    else {
+                        alert("Incorrect Password");
+                        return;
+                    }
+                } 
+                else {
+                    alert("Username not found");
+                }
+            }
         });
     });
+
+    // !- accessing database
+
+    // selecting artist
+    $(".play-btn").on("click", function(event){
+        var artist = $(this).attr("data-artist");
     });
+    // !- selecting artist
+});

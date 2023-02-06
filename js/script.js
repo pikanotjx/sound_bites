@@ -12,23 +12,45 @@ document.onreadystatechange = function() {
     }
 };
 
-$(document).ready(function(){
-    var currentAccount = null;
-    // navigation bar - show menu on click
-    var navbarHeight = $("header").height();
+    // navigation bar
+$(".nav-link span").hide();
+$(".nav-link").on("mouseenter", function(){
+    $(this).find("span").show();
+    $(this).find("i").hide();
+});
+$(".nav-link").on("mouseleave", function(){
+    $(this).find("span").hide();
+    $(this).find("i").show();
+});
 
-    $("#menu-button").on("click", function(event){
-        $("#navbarSupportedContent").toggleClass("show menuOpen");
-        $("#navbarSupportedContent").css("top", navbarHeight);
-    });
+// navigation bar - show menu on click
+var navbarHeight = $("header").height();
+
+$("#menu-button").on("click", function(event){
+    $("#navbarSupportedContent").toggleClass("show menuOpen");
+    $("#navbarSupportedContent").css("top", navbarHeight);
+});
     // !- navigation bar - show menu on click
 
+$(document).ready(function(){
+    // check if local storage has current account
+    var currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
+    if (currentAccount == null && window.location.pathname != "/login.html" && window.location.pathname != "/register.html" && window.location.pathname != "/index.html" && window.location.pathname != "/leaderboard.html") {
+        window.location.href = "login.html";
+    } else if (currentAccount != null){
+        $("#username").html(currentAccount.Username);
+        $("#highest-score").html(currentAccount.HighScore);
+        $("#latest-score").html(currentAccount.LatestScore);
+        $("#about").html(currentAccount.About);
+    }
+    // !- check if local storage has current account
+    
     // accessing database
     const APIKEY = "63df95363bc6b255ed0c46aa";
     $("#register-account").on("click", function(event){
+        
         var username = $("#username").val();
         var password = $("#password").val();
-        var dateJoined = new Date();
 
         if (username === "" || password === "") {
             alert("Please fill in all fields");
@@ -50,11 +72,15 @@ $(document).ready(function(){
             for(let account of response) {
                 if (username === account.Username) {
                     alert("Username already taken");
+                } else {
+                    alert("Account created");
+                    window.location.href = "login.html";
+                    return;
                 }
             }
         });
 
-        var jsondata = {"Username": username,"Password": password, "DateJoined": dateJoined, "HighScore": 0, "LatestScore": 0};
+        var jsondata = {"Username": username,"Password": password, "HighScore": 0, "LatestScore": 0};
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -72,7 +98,6 @@ $(document).ready(function(){
             console.log(response);
         });
 
-        alert("Registration Successful! Proceed to Login!")
     });
 
     $("#login-account").on("click", function(event){
@@ -101,6 +126,8 @@ $(document).ready(function(){
                     if (password === account.Password) {
                         currentAccount = account;
                         alert("Login Successful!");
+                        // save account to local storage
+                        localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
                         return;
                     } 
                     else {
@@ -115,10 +142,15 @@ $(document).ready(function(){
         });
     });
 
+    $("#logout-account").on("click", function(){
+        localStorage.removeItem("currentAccount");
+        window.location.href = "login.html";
+    });
+
     // !- accessing database
 
     // selecting artist
-    $(".play-btn").on("click", function(event){
+    $(".play-btn").on("click", function(){
         var artist = $(this).attr("data-artist");
     });
     // !- selecting artist

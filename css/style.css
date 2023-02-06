@@ -8,22 +8,6 @@ nav {
     font-size: 1.5em;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
-}
-
-nav a i {
-    padding: 0 10px;
-}
-
-nav a {
-    text-decoration: none;
-    padding: 0 10px;
-}
-
-nav a:hover {
-    color: #ccc;
-}
-
-nav {
     margin-bottom: 20px;
 }
 

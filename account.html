@@ -36,13 +36,13 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item active">
-                            <a href="/select-artist.html" class="nav-link"><i class="fa-solid fa-gamepad"></i><span>Play</span></a>
+                            <a href="/select-artist.html" class="nav-link play-nav"><i class="fa-solid fa-gamepad"></i><span>Play</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a href="/leaderboard.html" class="nav-link"><i class="fa-solid fa-ranking-star"></i><span>Leaderboard</span></a>
+                            <a href="/leaderboard.html" class="nav-link leaderboard-nav"><i class="fa-solid fa-ranking-star"></i><span>Leaderboard</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a href="/account.html" class="nav-link active"><i class="fa-solid fa-user"></i><span>Account</span></a>
+                            <a href="/account.html" class="nav-link account-nav active"><i class="fa-solid fa-user"></i><span>Account</span></a>
                     </ul>
                 </div>
             </div>
@@ -54,10 +54,9 @@
 <div class="container-py5">
     <div class="row">
         <div class="col-lg-4">
-          <div class="card mb-4">
+          <div class="card mb-4 border-0">
             <div class="card-body text-center">
-              <h5 class="display-1 username">pikanotjx</h5>
-              <p class="text-muted mb-4 date-joined">Date Joined</p>
+              <h5 class="display-1" id="username"></h5>
             </div>
           </div>
             <div class="card mb-4 border-0">
@@ -65,7 +64,7 @@
                   <a id="edit-profile" href="#" class="btn btn-primary">Edit Profile</a>
               </div>
               <div class="card-body text-center">
-                  <a id="log-out" class="btn btn-primary">Log Out</a>
+                  <a id="logout-account" class="btn btn-primary">Log Out</a>
               </div>
             </div>
         </div>
@@ -77,7 +76,7 @@
                   <p class="mb-0 fw-bold">About</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0 about">Hello! I am a fan of Zhou Shen!!</p>
+                  <p class="text-muted mb-0 about" id="about"></p>
                 </div>
               </div>
             </div>
@@ -87,7 +86,7 @@
               <div class="card mb-4 mb-md-0">
                 <div class="card-body">
                   <p class="mb-4"><span class="text-primary font-italic me-1">Rank</span></p>
-                    <p class="display-1 rank">19</p>
+                    <p class="display-1" id="rank"></p>
                 </div>
               </div>
             </div>
@@ -95,7 +94,7 @@
                 <div class="card mb-4 mb-md-0">
                   <div class="card-body">
                     <p class="mb-4"><span class="text-primary font-italic me-1">Highest Rank</span></p>
-                      <p class="display-1 highest-rank">19</p>
+                      <p class="display-1" id="highest-rank"></p>
                   </div>
                 </div>
               </div>
@@ -103,7 +102,7 @@
                 <div class="card mb-4 mb-md-0">
                   <div class="card-body">
                     <p class="mb-4"><span class="text-primary font-italic me-1">Latest Score</span></p>
-                      <p class="display-1 highest-rank">19</p>
+                      <p class="display-1" id="latest-score"></p>
                   </div>
                 </div>
               </div>
@@ -111,7 +110,7 @@
                 <div class="card mb-4 mb-md-0">
                   <div class="card-body">
                     <p class="mb-4"><span class="text-primary font-italic me-1">Highest Score</span></p>
-                      <p class="display-1 highest-rank">19</p>
+                      <p class="display-1" id="highest-score"></p>
                   </div>
                 </div>
               </div>

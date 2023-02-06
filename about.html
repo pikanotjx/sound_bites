@@ -37,7 +37,6 @@
       <!--navbar-->
       <nav
         class="navbar navbar-expand-lg navbar-light"
-        style="background-color: #e3f2fd"
       >
         <div class="container-fluid">
           <a class="navbar-brand active" href="index.html">
@@ -88,19 +87,77 @@
     </header>
 
     <!--jumbotron-->
-    <div class="jumbotron jumbotron-fluid position-absolute top-0 left-0 w-100 h-100 d-flex align-items-center">
+    <div class="jumbotron jumbotron-fluid">
       <div class="container my-5 w-50">
         <h1 class="display-4">
           SoundBites
           <small class="text-muted">Exploring music</small>
         </h1>
         <p class="lead">Are you a true music connoisseur?</p>
-        <a href="/select-artist.html" class="btn btn-primary nav-play btn-lg"
-          >Play</a>
+      </div>
+      <!--about-->
+      <div class="container my-5 w-50">
+        <p>
+          SoundBites is a music trivia game that tests your knowledge of songs
+          by popular artists. Pick your favourite artist and fight your way to
+          be their biggest fan on the leaderboard!
+        </p>
+      </div>
+      <div class="container my-5 w-50">
+        <h2>How to play</h2>
+        <p>
+          SoundBites is a music trivia game that tests your knowledge of music.
+          It is a fun and interactive way to learn more about music and the
+          artists behind them.
+        </p>
       </div>
     </div>
+
+    <!-- drop down menu -->
+    <div class="container my-5 w-50">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Accordion Item #1
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+            </div>
+            </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Accordion Item #2
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+            </div>
+            </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Accordion Item #3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
     <footer
-      class="text-center text-lg-start bg-light text-muted position-absolute bottom-0"
+      class="text-center text-lg-start bg-light text-muted position-relative bottom-0"
     >
       <div
         class="text-center p-4"

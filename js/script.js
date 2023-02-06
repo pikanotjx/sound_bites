@@ -1,3 +1,5 @@
+const APIKEY = "63df95363bc6b255ed0c46aa";
+
 document.onreadystatechange = function() {
     if (document.readyState !== "complete") {
         document.querySelector(
@@ -35,27 +37,28 @@ $("#menu-button").on("click", function(event){
 $(document).ready(function(){
     // check if local storage has current account
     var currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
-    if (currentAccount == null && window.location.pathname != "/login.html" && window.location.pathname != "/register.html" && window.location.pathname != "/index.html" && window.location.pathname != "/leaderboard.html") {
-        window.location.href = "login.html";
-    } else if (currentAccount != null){
+    if (currentAccount == null) {
+        $(".account-nav").attr("href", "/login.html");
+        $(".play-nav").attr("href", "/login.html");
+    } else {
         $("#username").html(currentAccount.Username);
         $("#highest-score").html(currentAccount.HighScore);
         $("#latest-score").html(currentAccount.LatestScore);
         $("#about").html(currentAccount.About);
     }
-    // !- check if local storage has current account
     
-    // accessing database
-    const APIKEY = "63df95363bc6b255ed0c46aa";
-    $("#register-account").on("click", function(event){
-        
+    // register new account
+    $("#register-account").on("click", function(){
+        // get username and password from form
         var username = $("#username").val();
         var password = $("#password").val();
 
+        // check if username and password are filled in
         if (username === "" || password === "") {
             alert("Please fill in all fields");
         }
 
+        // check if username is already taken
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -72,14 +75,12 @@ $(document).ready(function(){
             for(let account of response) {
                 if (username === account.Username) {
                     alert("Username already taken");
-                } else {
-                    alert("Account created");
-                    window.location.href = "login.html";
                     return;
                 }
             }
         });
 
+        // create new account
         var jsondata = {"Username": username,"Password": password, "HighScore": 0, "LatestScore": 0};
         var settings = {
             "async": true,
@@ -95,19 +96,28 @@ $(document).ready(function(){
             "data": JSON.stringify(jsondata)
             }
         $.ajax(settings).done(function (response) {
-            console.log(response);
+            alert("Account created successfully");
+            // save account to local storage
+            currentAccount = response;
+            localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
+            // redirect to index page
+            window.location.href = "index.html";
         });
 
     });
 
-    $("#login-account").on("click", function(event){
+    // login account
+    $("#login-account").on("click", function(){
+        // get username and password from form
         var username = $("#username").val();
         var password = $("#password").val();
 
+        // check if username and password are filled in
         if (username === "" || password === "") {
             alert("Please fill in all fields");
         }
 
+        // check if username and password are correct
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -128,13 +138,15 @@ $(document).ready(function(){
                         alert("Login Successful!");
                         // save account to local storage
                         localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
+                        // redirect to account page
+                        window.location.href = "account.html";
                         return;
                     } 
                     else {
                         alert("Incorrect Password");
                         return;
                     }
-                } 
+                }
                 else {
                     alert("Username not found");
                 }
@@ -142,9 +154,10 @@ $(document).ready(function(){
         });
     });
 
+    // logout account
     $("#logout-account").on("click", function(){
         localStorage.removeItem("currentAccount");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     });
 
     // !- accessing database

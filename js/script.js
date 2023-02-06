@@ -33,8 +33,8 @@ $("#menu-button").on("click", function (event) {
 
 // get artist to play
 $(".play-btn").on("click", function () {
-    artistToPlay = $(this).attr('id');
-    localStorage.setItem("artist", artistToPlay);
+    artist = $(this).attr('id');
+    localStorage.setItem("artist", artist);
     window.location.href = "game.html";
 });
 

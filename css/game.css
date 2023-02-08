@@ -1,123 +1,122 @@
 body {
-    margin: 0;
-    font-size: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
 }
 
 .custom-box {
-    max-width: 700px;
-    background-color: #170264;
-    color: #fff;
+  max-width: 700px;
+  background-color: #170264;
+  color: #fff;
 }
 
 .custom-box.hide {
-    display: none;
+  display: none;
 }
 
 .home-box h3 {
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 25px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 25px;
 }
 
 .home-box p {
-    color: #fff;
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 400;
+  color: #fff;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
 }
 
 .home-box p span {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .home-box .btn {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .btn {
-    background-color: #fff;
-    font-size: 16px;
-    display: inline-block
+  background-color: #fff;
+  font-size: 16px;
+  display: inline-block;
 }
 
 .btn:hover {
-    background-color: #7f7f7f;
+  background-color: #7f7f7f;
 }
 
 .quiz-box {
-    color: #fff;
+  color: #fff;
 }
 
 .quiz-box .qns {
-    font-size: 18px;
-    color: #fff;
-    font-weight: 600;
-    border-bottom: 1px solid #cccccc;
-    padding-bottom: 10px;
-    line-height: 25px;
-    margin-bottom: 30px;
-}  
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 10px;
+  line-height: 25px;
+  margin-bottom: 30px;
+}
 
 .quiz-box .option-container .option {
-    background-color: #cccccc;
-    padding: 15px;
-    font-size: 16px;
-    line-height: 22px;
-    color: #000000;
-    border-radius: 5px;
-    margin: 10px;
+  background-color: #cccccc;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .quiz-box .answers-indicator {
-    border-top: 1px solid #cccccc;
-    margin-top: 20px;
+  border-top: 1px solid #cccccc;
+  margin-top: 20px;
 }
 
-.quiz-box .answers-indicator div{
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    background-color: #cccccc;
-    border-radius: 50%;
-    margin-top: 10px;
-    margin-right: 3px;
-    margin-left: 10px;
+.quiz-box .answers-indicator div {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-color: #cccccc;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-right: 3px;
+  margin-left: 10px;
 }
 
-.result-box{
-    text-align:center;
+.result-box {
+  text-align: center;
 }
 
 .result-box h1 {
-    font-size: 36px;
-    line-height: 42px;
+  font-size: 36px;
+  line-height: 42px;
 }
 
 .result-box table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 30px 0; 
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
 }
 
 .result-box table td {
-    border: 1px solid #cccccc;
-    padding: 8px 15px;
-    font-weight: 500;
-    width: 50%;
-    text-align: left;
-    font-size: 18px;
+  border: 1px solid #cccccc;
+  padding: 8px 15px;
+  font-weight: 500;
+  width: 50%;
+  text-align: left;
+  font-size: 18px;
 }
 
 .result-box .btn {
-    margin-top: 10px;
-    margin-right: 30px;
-        
+  margin-top: 10px;
+  margin-right: 30px;
 }

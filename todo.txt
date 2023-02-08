@@ -6,3 +6,14 @@
 6. Points calculator
 
 
+    <!--jumbotron-->
+    <div class="jumbotron jumbotron-fluid position-absolute top-0 left-0 w-100 h-100 d-flex align-items-center">
+      <div class="container my-5 w-50">
+        <h1 class="display-4">
+          SoundBites
+          <small class="text-muted">Exploring music</small>
+        </h1>
+        <p class="lead">Are you a true music connoisseur?</p>
+        <a href="/select-artist.html" class="btn btn-primary btn-lg play-nav"><span>Play</span></a>
+      </div>
+    </div>

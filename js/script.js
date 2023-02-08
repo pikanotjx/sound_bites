@@ -46,20 +46,57 @@ $(document).ready(function () {
     $(".play-nav").attr("href", "/login.html");
   } else {
     $("#username").html(currentAccount.Username);
-    $("#highest-score").html(currentAccount.HighScore);
-    $("#latest-score").html(currentAccount.LatestScore);
-    $("#about").html(currentAccount.About);
   }
+
+  if (window.location.pathname === "/leaderboard.html") {
+
+    // get leaderboard
+    var settings = {
+        async: true,
+        crossDomain: true,
+        url: "https://soundbites-8ad9.restdb.io/rest/accounts",
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache",
+        },
+      };
+    
+      $.ajax(settings).done(function (response) {
+        var accounts = response;
+        // sort accounts by high score
+        accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
+        for (let i = 0; i < accounts.length; i++) {
+            // append account to leaderboard
+          $("#leaderboard").append(
+            `<tr>
+                <td>${i + 1}</td>
+                <td>${account.Username}</td>
+                <td>${account.HighArtist}</td>
+                <td>${account.HighScore}</td>
+            </tr>`
+          );
+        }
+      });
+    }
 
   // register new account
   $("#register-account").on("click", function () {
+    // clear old notice
+    $("#login-notice").html("");
+
+    // disable button
+    $("#register-account").attr("disabled", true);
+
     // get username and password from form
     var username = $("#username").val();
     var password = $("#password").val();
 
     // check if username and password are filled in
     if (username === "" || password === "") {
-      alert("Please fill in all fields");
+      $("#login-notice").html("Please fill in all fields");
+        $("#register-account").attr("disabled", false);
     }
 
     // check if username is already taken
@@ -78,7 +115,8 @@ $(document).ready(function () {
     $.ajax(settings).done(function (response) {
       for (let account of response) {
         if (username === account.Username) {
-          alert("Username already taken");
+          $("#login-notice").html("Username already taken");
+            $("#register-account").attr("disabled", false);
           return;
         }
       }
@@ -105,7 +143,7 @@ $(document).ready(function () {
       data: JSON.stringify(jsondata),
     };
     $.ajax(settings).done(function (response) {
-      alert("Account created successfully");
+      $("#success").html("Account created successfully");
       // save account to local storage
       currentAccount = response;
       localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
@@ -116,13 +154,21 @@ $(document).ready(function () {
 
   // login account
   $("#login-account").on("click", function () {
+    // clear old notice
+    $("#login-notice").html("");
+    
+    // disable button
+    $("#login-account").attr("disabled", true);
+
     // get username and password from form
     var username = $("#username").val();
     var password = $("#password").val();
 
     // check if username and password are filled in
     if (username === "" || password === "") {
-      alert("Please fill in all fields");
+      $("#login-notice").html("Please fill in all fields");
+      $("#login-account").attr("disabled", false);
+        return;
     }
 
     // check if username and password are correct
@@ -143,7 +189,7 @@ $(document).ready(function () {
         if (username === account.Username) {
           if (password === account.Password) {
             currentAccount = account;
-            alert("Login Successful!");
+            $("#success").html("Login successful");
             // save account to local storage
             localStorage.setItem(
               "currentAccount",
@@ -153,11 +199,13 @@ $(document).ready(function () {
             window.location.href = "account.html";
             return;
           } else {
-            alert("Incorrect Password");
+            $("#login-notice").html("Incorrect Password");
+            $("#login-account").attr("disabled", false);
             return;
           }
         } else {
-          alert("Username not found");
+          $("#login-notice").html("Username not found");
+            $("#login-account").attr("disabled", false);
         }
       }
     });

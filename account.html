@@ -61,33 +61,36 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item active">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-evenly w-50">
+              <li class="nav-item w-25 flip-bg">
                 <a
                   href="/select-artist.html"
-                  class="nav-link play-nav toggle-word"
-                  ><i class="fa-solid fa-gamepad"></i><span>Play</span></a
+                  class="nav-link play-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
+                  ><i class="fa-solid fa-gamepad flip-front"></i>
+                  <p class="flip-back text-center">Play</p>
+                  </a
                 >
               </li>
-              <li class="nav-item active">
+              <li class="nav-item w-25 flip-bg">
                 <a
                   href="/leaderboard.html"
-                  class="nav-link leaderboard-nav toggle-word"
-                  ><i class="fa-solid fa-ranking-star"></i
-                  ><span>Leaderboard</span></a
+                  class="nav-link leaderboard-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
+                  ><i class="fa-solid fa-ranking-star flip-front"></i>
+                  <p class="flip-back text-center">Leaderboard</p>
+                  </a
                 >
               </li>
-              <li class="nav-item">
-                <a href="/about.html" class="nav-link about-nav"
-                  ><i class="fa-solid fa-circle-info"></i><span>About</span></a
+              <li class="nav-item w-25 flip-bg">
+                <a href="/about.html" class="nav-link about-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
+                  ><i class="fa-solid fa-circle-info flip-front"></i><p class="flip-back text-center">About</p></a
                 >
               </li>
-              <li class="nav-item active">
+              <li class="nav-item w-25 flip-bg">
                 <a
                   href="/account.html"
-                  class="nav-link account-nav active toggle-word"
-                  ><i class="fa-solid fa-user"></i><span>Account</span></a
+                  class="nav-link account-nav active flip w-100 h-100 d-flex justify-content-center align-items-center"
+                  ><i class="fa-solid fa-user flip-front"></i><p class="flip-back text-center">Account</p></a
                 >
               </li>
             </ul>
@@ -95,6 +98,14 @@
         </div>
       </nav>
     </header>
+
+    <!-- create pop up for change password -->
+    <div
+      class="modal fade"
+      id="change-password-modal"
+      tabindex="-1"
+      aria-labelledby="change-password-modal"
+      aria-hidden="true"
 
     <div class="container-py5">
       <div class="row">
@@ -106,8 +117,8 @@
           </div>
           <div class="card mb-4 border-0">
             <div class="card-body text-center">
-              <a id="edit-profile" href="#" class="btn btn-primary"
-                >Edit Profile</a
+              <a id="change-password" href="#" class="btn btn-primary"
+                >Change Password</a
               >
             </div>
             <div class="card-body text-center">
@@ -185,7 +196,6 @@
     >
       <div
         class="text-center p-4"
-        style="background-color: rgba(0, 0, 0, 0.05)"
       >
         © 2023 Copyright:
         <a class="text-reset fw-bold" href="https://soundbites.kwokjingxuan.me"

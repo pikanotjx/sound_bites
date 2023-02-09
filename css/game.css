@@ -14,6 +14,7 @@ body {
   max-width: 700px;
   background-color: #170264;
   color: #fff;
+  border-radius: 20px;
 }
 
 .custom-box.hide {
@@ -23,7 +24,7 @@ body {
 .home-box h3 {
   color: #fff;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   line-height: 25px;
 }
 
@@ -74,22 +75,6 @@ body {
   color: #000000;
   border-radius: 5px;
   margin: 10px;
-}
-
-.quiz-box .answers-indicator {
-  border-top: 1px solid #cccccc;
-  margin-top: 20px;
-}
-
-.quiz-box .answers-indicator div {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background-color: #cccccc;
-  border-radius: 50%;
-  margin-top: 10px;
-  margin-right: 3px;
-  margin-left: 10px;
 }
 
 .result-box {

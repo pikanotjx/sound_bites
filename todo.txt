@@ -6,6 +6,7 @@
 6. Points calculator
 
 
+
     <!--jumbotron-->
     <div class="jumbotron jumbotron-fluid position-absolute top-0 left-0 w-100 h-100 d-flex align-items-center">
       <div class="container my-5 w-50">

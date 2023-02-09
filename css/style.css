@@ -25,12 +25,28 @@ footer {
   z-index: 4;
 }
 
-/* .menuOpen {
+.menuOpen {
   position: absolute;
   right: 0;
+  margin-top: 270px;
+  margin-right: 10px;
+  z-index: 5;
   padding: 10px;
-  text-align: left;
-} */
+}
+
+.menuOpen ul li{
+  list-style: none;
+  padding: 20px;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
+
+.menuOpen ul li p {
+  margin: 0 !important;
+  text-align: right !important;
+  
+}
 
 .floating {
   animation-name: floating;
@@ -61,7 +77,6 @@ footer {
 .flip {
     transition: 0.8s;
     transform-style: preserve-3d;
-
 }
 
 .flip-bg:hover .flip:hover {
@@ -75,4 +90,5 @@ footer {
 
 .flip-back {
     transform: rotateX(180deg);
+    text-align: right !important;
 }

@@ -4,6 +4,19 @@ SoundBites is the ultimate app for music fans! With SoundBites, you get to showc
 
 ## Design Process
 
+SoundBites is meant to be a simple and easy game for anyone under the sun. We designed SoundBites keeping in mind that our userbase could be anyone from little kids to elderlies. As such, we kept to a minimalistic and unclustered design, whereby all elements are reasonably spaced from each other, allowing for easy navigation. 
+
+Here are some use cases: 
+- I am big fan of Ed Sheeran! If I want to play a game to test how well I know his songs, I can use play SoundBites, selecting Ed Sheeran, and play a music game with only his songs. I can also fight my way to the top of the leaderboard by being the fastest guesser, and getting all the songs right! 
+- I am a neutral music lover who just wants to find new songs. With SoundBites, I can listen to songs from individual artists in its entirety. Of course, this means that my score will be low since I'm taking a longer time. But who cares? I'm just here for the songs anayways. 
+
+During the very first checkpoint submission, we were still unsure of what we wanted. But by the second week, our plans were firm, and we improved the original wireframe to the one that can be found in [wireframe.md](/wireframe.md) or in the [wireframes folder](/wireframe). The links to the desktop and mobile wireframes are also shown below. 
+
+- [Desktop](https://xd.adobe.com/view/f2295da2-527a-4f8e-aab0-8aa96d9383d6-a77a/)
+- [Mobile](https://xd.adobe.com/view/73b6732a-732e-49e0-a0d8-4934ccca1df7-26e5/)
+
+Note: While designing the app, we looked for lotties that we could apply in the app. However, we did not find any lotties that matched the look and feel of our app. Consequently, we created our own logo using Adobe Illustrator. While we attempted to convert the SVG file into a lottie, we realised that there were no animations that matched the feel we wanted, which was a basic simple bobbing animation. Thus, we decided to animate the logo on our own with the use of CSS. This logo is our solution in replacement to the use of lotties as required in the **Key Deliverables**. We hope that you may understand our situation, and recognise our efforts instead of just strictly saying that we are to be penalised due to the lack of use of lotties. 
+
 ## Features
 
 ### Existing Features
@@ -34,10 +47,32 @@ With SoundBites, music fans can put their knowledge to the test and compete agai
   - FontAwesome was used in the project to easily add scalable vector icons and social logos to the design.
 - [restDB](restdb.io)
   - restDB was used in the project to store and manage the data, providing an API to interact with the database and allowing the application to easily retrieve and manipulate the data as needed.
-- [papaparse](papaparse.com)
-  - papaparse was used in order to parse csv files containing the names of the songs into arrays of objects to be used. The original intention was to use restDB to contain the songs, but due to the limitations of the free account, we had to look for alternatives, and fortunately came across papaparse. 
+- [Papa Parse](papaparse.com)
+  - Papa Parse was used in order to parse csv files containing the names of the songs into arrays of objects to be used. The original intention was to use restDB to contain the songs, but due to the limitations of the free account, we had to look for alternatives, and fortunately came across papaparse. 
+
 ## Testing
 
+### Not Signed In
+
+1. Attempt to click on the play button in the index page and be redirected to the login page. 
+2. Attempt to click on the play button in the navigation bar and be redirected to the login page. 
+3. Attempt to click on the account button in the navigation bar and be redirected to the login page. 
+
+### Login
+
+1. Attempt to submit an empty form / a form half filled and a message asking you to fill in all fields will appear. 
+2. Enter an invalid username and a message saying that username is invalid will appear. 
+3. Enter an incorrect password and a message saying that the password is incorrect will appear. 
+
+### Register
+
+1. Attempt to submit an empty form / a form half filled and a message asking you to fill in all fields will appear. 
+2. Enter a username that is taken and a message saying that the username is taken will appear. 
+
+### Bugs
+
+- When navigation bar is collapsed, and opened, the words are cut off. 
+- When navigation bar is open and the window is expanded horizontally, formatting of the navigation bar will be weird until the page is refreshed.
 
 ## Credits
 
@@ -48,6 +83,3 @@ All songs used belong to their respective owners. Any owners who wish to have th
 ### Images
 
 All images used belong to their respective ownwers. All images were retrieved online from public sources. Any owners who wish to have their images removed may contact us at [hello@kwokjingxuan.me](mailto:hello@kwokjingxuan.me). 
-
-### Acknowledgments
-

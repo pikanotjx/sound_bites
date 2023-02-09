@@ -100,6 +100,11 @@
 
     <main>
       <div class="container">
+        <!-- notice if database is down-->
+        <div class="alert alert-danger alert-dismissible fade" id="db-down" role="alert">
+          <strong>Database is down!</strong> Please try again later.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="row">
           <div class="col-12">
             <h1 class="text-center">Leaderboard</h1>
@@ -112,7 +117,6 @@
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Username</th>
-                  <th scope="col">Artist</th>
                   <th scope="col">Score</th>
                 </tr>
               </thead>

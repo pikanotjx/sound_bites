@@ -26,13 +26,27 @@
     <div class="col-md-9 col-lg-6 col-xl-5 text-center">
       <img src="/src/logo/logo-2-black.svg" class="img-fluid floating logo" alt="SoundBites Logo" height="300" width="300">
 
-      <div class="home-box custom-box rounded text-start p-4 hide">
-        <h3 id="artist-name">Test</h3>
-        <p>Total number of songs: <span class="total-questions">10</span></p>
-        <button type="button" class = "btn btn-lg">Start Game</button>
+
+      <!-- notice if database is down-->
+      <div class="alert alert-danger alert-dismissible fade" id="db-down" role="alert">
+        <strong>Database is down!</strong> Scores will not be saved! 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <div class="quiz-box custom-box rounded text-start p-4">
+      <!-- score updating notice -->
+      <div class="alert alert-success alert-dismissible fade" id="score-updated" role="alert">
+        <strong>Score updated!</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <div class="home-box custom-box text-start p-4">
+        <!-- Data to be filled in js -->
+        <h3 id="artist-name"></h3>
+        <p>Total number of songs: <span class="total-questions"></span></p>
+        <button type="button" class = "btn btn-lg" id="start-game">Start Game</button>
+      </div>
+
+      <div class="quiz-box custom-box rounded text-start p-4 hide">
         <div class = "qns">What song do you hear? </div>
         <div class="option-container">
         </div>
@@ -58,8 +72,8 @@
             <td><span class="score">493</span></td>
           </tr>
         </table>
-        <button type="button" class = "btn btn-lg">Play Again</button>
-        <button type="button" class = "btn btn-lg">Return</button>
+        <button type="button" class="btn btn-lg" id="play-again">Play Again</button>
+        <button type="button" class="btn btn-lg" id="return">Return</button>
       </div>
     </div>
   </div>

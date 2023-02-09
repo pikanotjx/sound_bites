@@ -11,31 +11,22 @@ document.onreadystatechange = function () {
   }
 };
 
-// navigation bar
-$(".nav-link span").hide();
-$(".nav-link").on("mouseenter", function () {
-  $(this).find("span").show();
-  $(this).find("i").hide();
-});
-$(".nav-link").on("mouseleave", function () {
-  $(this).find("span").hide();
-  $(this).find("i").show();
-});
-
 // navigation bar - show menu on click
-var navbarHeight = $("header").height();
-
-$("#menu-button").on("click", function (event) {
-  $(".nav-link").removeClass(".toggle-word");
+$("#menu-button").on("mouseenter", function (event) {
   $("#navbarSupportedContent").toggleClass("show menuOpen");
-  $("#navbarSupportedContent").css("top", navbarHeight);
 });
+
+if ($("#navbarSupportedContent").hasClass("menuOpen")) {
+  $("#navbarSupportedContent").on("mouseleave", function (event) {
+    $("#navbarSupportedContent").toggleClass("show menuOpen");
+  });
+}
 
 // get artist to play
 $(".play-btn").on("click", function () {
-    artist = $(this).attr('id');
-    localStorage.setItem("artist", artist);
-    window.location.href = "game.html";
+  artist = $(this).attr("id");
+  localStorage.setItem("artist", artist);
+  window.location.href = "game.html";
 });
 
 $(document).ready(function () {
@@ -44,42 +35,43 @@ $(document).ready(function () {
   if (currentAccount == null) {
     $(".account-nav").attr("href", "/login.html");
     $(".play-nav").attr("href", "/login.html");
-  } else {
-    $("#username").html(currentAccount.Username);
   }
 
-  if (window.location.pathname === "/leaderboard.html") {
+  // update account page and leaderboard
+  var settings = {
+    async: true,
+    crossDomain: true,
+    url: "https://soundbites-8ad9.restdb.io/rest/accounts",
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      "x-apikey": APIKEY,
+      "cache-control": "no-cache",
+    },
+  };
 
-    // get leaderboard
-    var settings = {
-        async: true,
-        crossDomain: true,
-        url: "https://soundbites-8ad9.restdb.io/rest/accounts",
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "x-apikey": APIKEY,
-          "cache-control": "no-cache",
-        },
-      };
-    
-      $.ajax(settings).done(function (response) {
-        var accounts = response;
-        // sort accounts by high score
-        accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
-        for (let i = 0; i < accounts.length; i++) {
-            // append account to leaderboard
-          $("#leaderboard").append(
-            `<tr>
+  $.ajax(settings).done(function (accounts) {
+    // sort accounts by high score
+    accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
+    for (let i = 0; i < accounts.length; i++) {
+      // update account page
+      if (accounts[i].Username === currentAccount.Username) {
+        $("#username").html(accounts[i].Username);
+        $("#highest-rank").html(accounts[i].HighestRank);
+        $("#highest-score").html(accounts[i].HighScore);
+        $("#latest-score").html(accounts[i].LatestScore);
+        $("#rank").html(i + 1);
+      }
+      // append account to leaderboard
+      $("#leaderboard").append(
+        `<tr>
                 <td>${i + 1}</td>
-                <td>${account.Username}</td>
-                <td>${account.HighArtist}</td>
-                <td>${account.HighScore}</td>
+                <td>${accounts[i].Username}</td>
+                <td>${accounts[i].HighScore}</td>
             </tr>`
-          );
-        }
-      });
+      );
     }
+  });
 
   // register new account
   $("#register-account").on("click", function () {
@@ -96,7 +88,7 @@ $(document).ready(function () {
     // check if username and password are filled in
     if (username === "" || password === "") {
       $("#login-notice").html("Please fill in all fields");
-        $("#register-account").attr("disabled", false);
+      $("#register-account").attr("disabled", false);
     }
 
     // check if username is already taken
@@ -116,7 +108,7 @@ $(document).ready(function () {
       for (let account of response) {
         if (username === account.Username) {
           $("#login-notice").html("Username already taken");
-            $("#register-account").attr("disabled", false);
+          $("#register-account").attr("disabled", false);
           return;
         }
       }
@@ -156,7 +148,7 @@ $(document).ready(function () {
   $("#login-account").on("click", function () {
     // clear old notice
     $("#login-notice").html("");
-    
+
     // disable button
     $("#login-account").attr("disabled", true);
 
@@ -168,7 +160,7 @@ $(document).ready(function () {
     if (username === "" || password === "") {
       $("#login-notice").html("Please fill in all fields");
       $("#login-account").attr("disabled", false);
-        return;
+      return;
     }
 
     // check if username and password are correct
@@ -205,7 +197,7 @@ $(document).ready(function () {
           }
         } else {
           $("#login-notice").html("Username not found");
-            $("#login-account").attr("disabled", false);
+          $("#login-account").attr("disabled", false);
         }
       }
     });
@@ -221,7 +213,9 @@ $(document).ready(function () {
 
   // selecting artist
   $(".play-btn").on("click", function () {
-    var artist = $(this).attr("data-artist");
+    var artist = $(this).attr("id");
+    // save artist to local storage
+    localStorage.setItem("artist", artist);
   });
   // !- selecting artist
 });

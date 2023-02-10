@@ -12,9 +12,11 @@ $.ajax({
     "cache-control": "no-cache",
   },
   success: function () {
+    // if database is up, get database
     getDatabase();
   },
   error: function () {
+    // if database is down, show error message, disable buttons
     $("#db-down").show();
     $("#db-down").addClass("show");
     $("#login-account").attr("disabled", "true");

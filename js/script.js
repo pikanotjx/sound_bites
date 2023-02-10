@@ -182,6 +182,8 @@ $("#login-account").on("click", function () {
             "currentAccount",
             JSON.stringify(currentAccount)
           );
+          console.log(currentAccount);
+          console.log(localStorage.getItem("currentAccount"));
           // redirect to account page
           window.location.href = "account.html";
           return;

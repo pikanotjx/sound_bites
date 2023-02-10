@@ -1,6 +1,6 @@
+// declare variables
 var artist = localStorage.getItem("artist");
 const optionContainer = $(".option-container");
-var currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 
 var songCounter = 0;
 let correctAnswers = 0;
@@ -11,14 +11,23 @@ var startTime;
 var endTime;
 var dbDown = false;
 
+// when document is ready
 $(document).ready(function () {
+    // check if user is logged in
     if (!("currentAccount" in localStorage)) {
+        // if not logged in, warn user that score will not be saved
         $(".db-down").html("<strong>No account!</strong> Please <a href=\"login.html\">login</a> to save your score.");
         $(".db-down").show();
+        dbDown = true;
     }
+
+    // set artist name in header
     $("#artist-name").html(artist.split("_").join(" "));
+
+    // set available songs
     setAvailableSongs()
         .then(() => {
+            // start timer on clicking start button, hide home box and show quiz box and set first question
             $("#start-game").on("click", function () {
                 startTime = new Date();
                 $(".home-box").addClass("hide");
@@ -29,15 +38,20 @@ $(document).ready(function () {
     );
 });
 
+// when user clicks on play again at the end of the game
 $("#play-again").on("click", function () {
     location.reload();
 });
 
+// when user clicks on return at the end of the game, go to select artist
 $("#return").on("click", function () {
     window.location.href = "select-artist.html";
 });
 
+// get songlist from artist.csv file using Papa Parse
+// credit: https://www.papaparse.com/
 async function setAvailableSongs() {
+    // wait for Papa.parse to finish
     await Papa.parse("src/csv/" + artist + ".csv", {
         download: true,
         header: true,
@@ -46,15 +60,19 @@ async function setAvailableSongs() {
                 songList.push(results.data[i]);
                 allSongs.push(results.data[i]);
             }
+            // shuffle songs
             songList = shuffleSongs(songList);
+            // shwo number of questions
             $(".total-questions").html(songList.length);
         },
     });
 }
 
 function setQuestion() {
+    // get song from by index (list has already been shuffled previously)
     let song = songList[songCounter];
     let songName = song.SongName;
+    // get song file
     let file = "src/mp3/" + artist + "/" + song.FileName;
     // play song
     var audio = new Audio(file);
@@ -67,6 +85,7 @@ function setQuestion() {
             options.push(randomSong.SongName);
         }
     }
+    // shuffle options (if not anwer will always be first option)
     options = shuffleSongs(options);
     // display options
     for (let i=0; i<options.length; i++) {
@@ -76,18 +95,31 @@ function setQuestion() {
         optionContainer.append(option);
     }
 
-    // check if answer is correct
+    // on selecting of any option
     $(".option").on("click", function () {
-        audio.pause();
-        $(".option").remove();
+        // check if answer is correct
         if ($(this).html() == songName) {
+            // if correct, increment correct answers and change background color to green
             correctAnswers ++;
+            $(this).css("background-color", "green");
+        } else {
+            // if incorrect, change background color to red
+            $(this).css("background-color", "red");
         }
+        // increment song counter and check if there are more songs
         songCounter ++;
         if (songCounter < songList.length) {
-            setQuestion();
+            // if there are more songs, disable options and set next question after 1 second
+            $(".option").css("pointer-events", "none");
+            setTimeout(() => {
+                // stop song
+                audio.pause();
+                $(".option").remove();
+                setQuestion();
+            }, 1000);
         }
         else {
+            // if no more songs, stop song, hide quiz box and show result box
             endTime = new Date();
             $(".quiz-box").addClass("hide");
             $(".result-box").removeClass("hide");
@@ -102,10 +134,12 @@ function setQuestion() {
     });
 }
 
+// function to get random item from array
 function getRandomItem(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// function to calculate score
 function calculateScore() {
   var timeTaken = (endTime - startTime) / 1000;
   console.log(timeTaken)
@@ -113,10 +147,12 @@ function calculateScore() {
   return score;
 }
 
+// function to shuffle array
 function shuffleSongs(arr) {
     return arr.sort((a, b) => 0.5 - Math.random());
 }
 
+// function to save score to database
 function saveScore() {
     var settings = {
         async: true,

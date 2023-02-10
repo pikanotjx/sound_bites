@@ -33,26 +33,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <!-- score updating notice -->
-      <div class="alert alert-success alert-dismissible fade" id="score-updated" role="alert">
-        <strong>Score updated!</strong> 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-
-      <div class="home-box custom-box text-start p-4">
+      <div class="home-box custom-box text-start p-4 w-100">
         <!-- Data to be filled in js -->
         <h3 id="artist-name"></h3>
         <p>Total number of songs: <span class="total-questions"></span></p>
         <button type="button" class = "btn btn-lg" id="start-game">Start Game</button>
       </div>
 
-      <div class="quiz-box custom-box text-start p-4 hide">
+      <div class="quiz-box custom-box text-start p-4 w-100 hide">
         <div class = "qns">What song do you hear? </div>
         <div class="option-container">
         </div>
       </div>
 
-      <div class="result-box custom-box p-4 hide">
+      <div class="result-box custom-box p-4 w-100 hide">
         <h1>Game Results!</h1>
         <table>
           <tr>
@@ -75,6 +69,11 @@
         <button type="button" class="btn btn-lg" id="play-again">Play Again</button>
         <button type="button" class="btn btn-lg" id="return">Return</button>
       </div>
+            <!-- score updating notice -->
+            <div class="alert alert-success alert-dismissible fade" id="score-updated" role="alert">
+              <strong>Score updated!</strong> 
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
     </div>
   </div>
 

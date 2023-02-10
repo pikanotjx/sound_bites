@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="/src/logo/logo-1-black.svg">
-    <title>SoundBites | Register</title>
+    <title>SoundBites | Login</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -61,10 +61,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarSupportedContent"
-          >
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav justify-content-evenly w-50">
               <li class="nav-item w-25 flip-bg">
                 <a
@@ -72,7 +69,8 @@
                   class="nav-link play-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
                   ><i class="fa-solid fa-gamepad flip-front"></i>
                   <p class="flip-back text-center">Play</p>
-                </a>
+                  </a
+                >
               </li>
               <li class="nav-item w-25 flip-bg">
                 <a
@@ -80,22 +78,19 @@
                   class="nav-link leaderboard-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
                   ><i class="fa-solid fa-ranking-star flip-front"></i>
                   <p class="flip-back text-center">Leaderboard</p>
-                </a>
+                  </a
+                >
               </li>
               <li class="nav-item w-25 flip-bg">
-                <a
-                  href="/about.html"
-                  class="nav-link about-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
-                  ><i class="fa-solid fa-circle-info flip-front"></i>
-                  <p class="flip-back text-center">About</p></a
+                <a href="/about.html" class="nav-link about-nav flip w-100 h-100 d-flex justify-content-center align-items-center"
+                  ><i class="fa-solid fa-circle-info flip-front"></i><p class="flip-back text-center">About</p></a
                 >
               </li>
               <li class="nav-item w-25 flip-bg">
                 <a
                   href="/account.html"
                   class="nav-link account-nav active flip w-100 h-100 d-flex justify-content-center align-items-center"
-                  ><i class="fa-solid fa-user flip-front"></i>
-                  <p class="flip-back text-center">Account</p></a
+                  ><i class="fa-solid fa-user flip-front"></i><p class="flip-back text-center">Account</p></a
                 >
               </li>
             </ul>
@@ -121,7 +116,6 @@
               <strong>Database is down!</strong> Please try again later.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-
             <form>
               <!-- Username input -->
               <div class="form-outline mb-4">
@@ -131,7 +125,7 @@
                   class="form-control form-control-lg"
                   placeholder="Enter a username"
                 >
-                <label class="form-label" for="username">Username</label>
+                <label class="form-label" for="username">Username</label> 
               </div>
 
               <!-- Password input -->
@@ -140,7 +134,7 @@
                   type="password"
                   id="password"
                   class="form-control form-control-lg"
-                  placeholder="Enter a password"
+                  placeholder="Create a password"
                 >
                 <label class="form-label" for="password">Password</label>
               </div>
@@ -174,7 +168,7 @@
               <div>
                 <p class="small fw-bold mt-2 pt-1 mb-0 d-block">
                   Have an account?
-                  <a href="/Login.html" class="link-danger">Login</a>
+                  <a href="/login.html" class="link-danger">Login</a>
                 </p>
               </div>
             </form>
@@ -184,7 +178,9 @@
     </div>
 
     <footer class="text-center text-lg-start bg-light text-muted mt-auto">
-      <div class="text-center p-4">
+      <div
+        class="text-center p-4"
+      >
         © 2023 Copyright:
         <a class="text-reset fw-bold" href="https://soundbites.kwokjingxuan.me"
           >SoundBites</a
@@ -206,6 +202,9 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
       integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"
+    ></script>
+    <script 
+      src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
     ></script>
   </body>
 </html>

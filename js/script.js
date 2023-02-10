@@ -1,4 +1,4 @@
-const APIKEY = "63e5e85f478852088da67fdb";
+const APIKEY = "63e5e85f478852088da67 fdb";
 const DBURL = "https://soundbites-31d5.restdb.io/rest/accounts";
 var currentAccount = null;
 
@@ -182,7 +182,6 @@ $("#login-account").on("click", function () {
             "currentAccount",
             JSON.stringify(currentAccount)
           );
-          console.log(localStorage.getItem("currentAccount"));
           // redirect to account page
           window.location.href = "account.html";
           return;
@@ -210,13 +209,6 @@ $("#logout-account").on("click", function () {
   window.location.href = "index.html";
 });
 
-$(".play-btn").on("click", function () {
-  // get artist to play from button id
-  var artist = $(this).attr("id");
-  // save artist to local storage
-  localStorage.setItem("artist", artist);
-});
-
 function getDatabase() {
   // update account page and leaderboard
   var settings = {
@@ -235,6 +227,14 @@ function getDatabase() {
     // sort accounts by high score
     accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
     for (let i = 0; i < accounts.length; i++) {
+      // append account to leaderboard
+      $("#leaderboard").append(
+        `<tr>
+                <td>${i + 1}</td>
+                <td>${accounts[i].Username}</td>
+                <td>${accounts[i].HighScore}</td>
+            </tr>`
+      );
       // update account page
       if (currentAccount !== null) {
         if (accounts[i].Username === currentAccount.Username) {
@@ -245,15 +245,6 @@ function getDatabase() {
           $("#rank").html(i + 1);
         }
       }
-
-      // append account to leaderboard
-      $("#leaderboard").append(
-        `<tr>
-                <td>${i + 1}</td>
-                <td>${accounts[i].Username}</td>
-                <td>${accounts[i].HighScore}</td>
-            </tr>`
-      );
     }
   });
 }

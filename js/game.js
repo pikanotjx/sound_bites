@@ -136,9 +136,9 @@ function setQuestion() {
             $(".correct-answers").html(correctAnswers);
             $(".total-question").html(songList.length);
             $(".time-taken").html((endTime - startTime) / 1000 + "s");
-            // if (!dbDown) {
+            if (!dbDown) {
                 saveScore();
-            // }
+            }
         }
     });
 }

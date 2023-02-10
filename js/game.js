@@ -10,11 +10,12 @@ let allSongs = [];
 var startTime;
 var endTime;
 var dbDown = false;
+var currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 
 // when document is ready
 $(document).ready(function () {
     // check if user is logged in
-    if (currentAccount === null || currentAccount === undefined || currentAccount === "" || currentAccount === JSON.stringify()) {
+    if (currentAccount === null) {
         // if not logged in, warn user that score will not be saved
         $("#db-down span").html("<strong>No account!</strong> Please <a href=\"login.html\">login</a> to save your score.");
         $("#db-down").show();

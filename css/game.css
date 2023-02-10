@@ -8,6 +8,7 @@ body {
   margin: 0;
   padding: 0;
   outline: none;
+  overflow-y:hidden;
 }
 
 .custom-box {
@@ -23,7 +24,7 @@ body {
 
 .home-box h3 {
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: capitalize;
   line-height: 25px;
 }
@@ -36,7 +37,7 @@ body {
 }
 
 .home-box p span {
-  font-weight: 500;
+  font-weight: 1000;
 }
 
 .home-box .btn {
@@ -67,10 +68,15 @@ body {
   margin-bottom: 30px;
 }
 
+.quiz-box .option-container .option:hover{
+  background-color: #7f7f7f;
+}
+
 .quiz-box .option-container .option {
-  background-color: #cccccc;
+  background-color: #ffffff;
   padding: 15px;
   font-size: 16px;
+  font-weight: 500;
   line-height: 22px;
   color: #000000;
   border-radius: 5px;

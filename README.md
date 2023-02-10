@@ -2,6 +2,8 @@
 
 SoundBites is the ultimate app for music fans! With SoundBites, you get to showcase your knowledge of your favorite artist and compete against others to become the biggest fan. Simply select your favorite artist, listen to the song being played, and select the right title. The app will calculate your score and place you on the leaderboard, where you can see how you stack up against other fans. So, put your musical knowledge to the test and fight your way to the top with SoundBites!
 
+Note for lecturer: While designing the app, we looked for lotties that we could apply in the app. However, we did not find any lotties that matched the look and feel of our app. Consequently, we created our own logo using Adobe Illustrator. While we attempted to convert the SVG file into a lottie, we realised that there were no animations that matched the feel we wanted, which was a basic simple bobbing animation. Thus, we decided to animate the logo on our own with the use of CSS. This logo is our solution in replacement to the use of lotties as required in the **Key Deliverables**. We hope that you may understand our situation, and recognise our efforts instead of just strictly saying that we are to be penalised due to the lack of use of lotties. 
+
 ## Design Process
 
 SoundBites is meant to be a simple and easy game for anyone under the sun. We designed SoundBites keeping in mind that our userbase could be anyone from little kids to elderlies. As such, we kept to a minimalistic and unclustered design, whereby all elements are reasonably spaced from each other, allowing for easy navigation. 
@@ -14,8 +16,6 @@ During the very first checkpoint submission, we were still unsure of what we wan
 
 - [Desktop](https://xd.adobe.com/view/f2295da2-527a-4f8e-aab0-8aa96d9383d6-a77a/)
 - [Mobile](https://xd.adobe.com/view/73b6732a-732e-49e0-a0d8-4934ccca1df7-26e5/)
-
-Note: While designing the app, we looked for lotties that we could apply in the app. However, we did not find any lotties that matched the look and feel of our app. Consequently, we created our own logo using Adobe Illustrator. While we attempted to convert the SVG file into a lottie, we realised that there were no animations that matched the feel we wanted, which was a basic simple bobbing animation. Thus, we decided to animate the logo on our own with the use of CSS. This logo is our solution in replacement to the use of lotties as required in the **Key Deliverables**. We hope that you may understand our situation, and recognise our efforts instead of just strictly saying that we are to be penalised due to the lack of use of lotties. 
 
 ## Features
 

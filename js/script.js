@@ -1,4 +1,4 @@
-const APIKEY = "63e5e85f478852088da67 fdb";
+const APIKEY = "63e5e85f478852088da67fdb";
 const DBURL = "https://soundbites-31d5.restdb.io/rest/accounts";
 var currentAccount = null;
 

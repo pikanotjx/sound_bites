@@ -168,7 +168,7 @@ function saveScore() {
     var settings = {
         async: true,
         crossDomain: true,
-        url: "https://soundbites-31d5.restdb.io/rest/accounts",
+        url: DBURL,
         method: "GET",
         headers: {
           "content-type": "application/json",

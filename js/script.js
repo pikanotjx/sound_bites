@@ -1,5 +1,5 @@
 const APIKEY = "63e5e85f478852088da67fdb";
-const DBURL = DBURL;
+const DBURL = "https://soundbites-31d5.restdb.io/rest/accounts";
 var currentAccount;
 
 $("#db-down").hide();
@@ -58,6 +58,9 @@ $(".play-btn").on("click", function () {
 
 // register new account
 $("#register-account").on("click", function () {
+  // enable form loading lottie
+  $("#form-loading").css("display", "block");
+
   // clear old notice
   $("#login-notice").html("");
 
@@ -129,6 +132,9 @@ $("#register-account").on("click", function () {
 
 // login account
 $("#login-account").on("click", function () {
+  // enable form loading lottie
+  $("#form-loading").css("display", "block");
+
   // clear old notice
   $("#login-notice").html("");
 

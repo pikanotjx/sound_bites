@@ -11,7 +11,7 @@ $.ajax({
     "x-apikey": APIKEY,
     "cache-control": "no-cache",
   },
-  success: function() {
+  success: function () {
     getDatabase();
   },
   error: function () {
@@ -20,13 +20,14 @@ $.ajax({
     $("#login-account").attr("disabled", "true");
     $("#register-account").attr("disabled", "true");
   },
-  });
+});
 
 $(document).ready(function () {
   // check if local storage has current account
-  currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
   if (currentAccount == null) {
     $(".account-nav").attr("href", "/login.html");
+  } else {
+    currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
   }
 });
 

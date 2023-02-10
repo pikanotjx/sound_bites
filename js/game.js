@@ -151,7 +151,6 @@ function getRandomItem(arr) {
 // function to calculate score
 function calculateScore() {
   var timeTaken = (endTime - startTime) / 1000;
-  console.log(timeTaken)
   var score = Math.floor(((correctAnswers / songList.length) * 10000) / (timeTaken / songList.length));
   return score;
 }

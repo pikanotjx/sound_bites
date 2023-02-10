@@ -28,7 +28,6 @@ $.ajax({
 $(document).ready(function () {
   // check if local storage has current account
   if (localStorage.getItem("currentAccount") === null) {
-    console.log("no account")
     $(".account-nav").attr("href", "/login.html");
   } else {
     currentAccount = JSON.parse(localStorage.getItem("currentAccount"));

@@ -1,11 +1,12 @@
 const APIKEY = "63e5e85f478852088da67fdb";
+const DBURL = DBURL;
 var currentAccount;
 
 $("#db-down").hide();
 
 // check if link can be accessed
 $.ajax({
-  url: "https://soundbites-31d5.restdb.io/rest/accounts",
+  url: DBURL,
   headers: {
     "content-type": "application/json",
     "x-apikey": APIKEY,
@@ -77,7 +78,7 @@ $("#register-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: "https://soundbites-31d5.restdb.io/rest/accounts",
+    url: DBURL,
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -106,7 +107,7 @@ $("#register-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: "https://soundbites-31d5.restdb.io/rest/accounts",
+    url: DBURL,
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -149,7 +150,7 @@ $("#login-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: "https://soundbites-31d5.restdb.io/rest/accounts",
+    url: DBURL,
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -160,8 +161,11 @@ $("#login-account").on("click", function () {
 
   $.ajax(settings).done(function (response) {
     for (let account of response) {
+      // if username is correct
       if (username === account.Username) {
+        // if password is correct
         if (password === account.Password) {
+          // save account to global variable
           currentAccount = account;
           $("#success").html("Login successful");
           // save account to local storage
@@ -173,13 +177,16 @@ $("#login-account").on("click", function () {
           window.location.href = "account.html";
           return;
         } else {
+          // if password is incorrect
           $("#login-notice").html("Incorrect Password");
           $("#login-account").attr("disabled", false);
           return;
         }
       } else {
+        // if username is incorrect
         $("#login-notice").html("Username not found");
         $("#login-account").attr("disabled", false);
+        return;
       }
     }
   });
@@ -191,22 +198,19 @@ $("#logout-account").on("click", function () {
   window.location.href = "index.html";
 });
 
-// !- accessing database
-
-// selecting artist
 $(".play-btn").on("click", function () {
+  // get artist to play from button id
   var artist = $(this).attr("id");
   // save artist to local storage
   localStorage.setItem("artist", artist);
 });
-// !- selecting artist
 
 function getDatabase() {
   // update account page and leaderboard
   var settings = {
     async: true,
     crossDomain: true,
-    url: "https://soundbites-31d5.restdb.io/rest/accounts",
+    url: DBURL,
     method: "GET",
     headers: {
       "content-type": "application/json",

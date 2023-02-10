@@ -182,7 +182,6 @@ $("#login-account").on("click", function () {
             "currentAccount",
             JSON.stringify(currentAccount)
           );
-          console.log(currentAccount);
           console.log(localStorage.getItem("currentAccount"));
           // redirect to account page
           window.location.href = "account.html";
@@ -194,16 +193,16 @@ $("#login-account").on("click", function () {
           $("#login-account").attr("disabled", false);
           return;
         }
-      } else {
-        // if username is incorrect
-        $("#form-loading").css("display", "none");
-        $("#login-notice").html("Username not found");
-        $("#login-account").attr("disabled", false);
-        return;
       }
     }
+    // if username is incorrect
+    $("#form-loading").css("display", "none");
+    $("#login-notice").html("Username not found");
+    $("#login-account").attr("disabled", false);
+    return;
   });
 });
+
 
 // logout account
 $("#logout-account").on("click", function () {

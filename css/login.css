@@ -1,3 +1,4 @@
+/* Set logo positon in login and register page */
 .floating {
   animation-name: floating;
   animation-duration: 3s;
@@ -6,16 +7,4 @@
   margin-left: 30px;
   margin-top: 5px;
   margin-bottom: 20px;
-}
-
-@keyframes floating {
-  0% {
-    transform: translate(0, 0px);
-  }
-  50% {
-    transform: translate(0, 10px);
-  }
-  100% {
-    transform: translate(0, -0px);
-  }
 }

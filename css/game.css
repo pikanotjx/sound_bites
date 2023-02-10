@@ -1,8 +1,10 @@
+/* Set general font-size and margin for the body */
 body {
   margin: 0;
   font-size: 16px;
 }
 
+/* Remove overflox-y and struture layout*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,6 +13,7 @@ body {
   overflow-y:hidden;
 }
 
+/* Set background colour of all boxes, along with the mox-width and text colour */
 .custom-box {
   max-width: 700px;
   background-color: #170264;
@@ -18,60 +21,61 @@ body {
   border-radius: 20px;
 }
 
+/* Hide the custom-box when hide class exists */
 .custom-box.hide {
   display: none;
 }
 
+/* Set heading font weight, colour. Make heading capitalised and adjust line height */
 .home-box h3 {
-  color: #fff;
   font-weight: 700;
   text-transform: capitalize;
   line-height: 25px;
 }
 
+/* Set line height and font weight of the "Total Questions: (no. of songs)" text */
 .home-box p {
-  color: #fff;
-  font-size: 16px;
   line-height: 22px;
   font-weight: 400;
 }
 
+/* Set the font weight of the (no. of songs) in the "Total Questions: (no. of songs)" text */
 .home-box p span {
   font-weight: 1000;
 }
 
+/* Postion game start button */
 .home-box .btn {
   margin-top: 20px;
 }
 
+/* Set button colour and display type */
 .btn {
   background-color: #fff;
-  font-size: 16px;
   display: inline-block;
 }
 
+/* Darken button on hover */
 .btn:hover {
-  background-color: #7f7f7f;
+  background-color: #c2c2c2;
 }
 
-.quiz-box {
-  color: #fff;
-}
-
+/* Set the font size of the question "What song do you hear?" text. Also add a line below to separate it from the options */
 .quiz-box .qns {
   font-size: 18px;
-  color: #fff;
   font-weight: 600;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ffffff;
   padding-bottom: 10px;
   line-height: 25px;
   margin-bottom: 30px;
 }
 
+/* Darken option on hover */
 .quiz-box .option-container .option:hover{
   background-color: #7f7f7f;
 }
 
+/* Set the font weight and colour of the options. Adjust option display */
 .quiz-box .option-container .option {
   background-color: #ffffff;
   padding: 15px;
@@ -83,21 +87,25 @@ body {
   margin: 10px;
 }
 
+/* Align table and all text in the result box to the center */
 .result-box {
   text-align: center;
 }
 
+/* Set font size and line height of result box header */
 .result-box h1 {
   font-size: 36px;
   line-height: 42px;
 }
 
+/* Set width of table, and adjust table position */
 .result-box table {
   width: 100%;
   border-collapse: collapse;
   margin: 30px 0;
 }
 
+/* Set border, padding, font weight, width, text alignment and font size of table cells */
 .result-box table td {
   border: 1px solid #cccccc;
   padding: 8px 15px;
@@ -107,6 +115,7 @@ body {
   font-size: 18px;
 }
 
+/* Position the "Play Again" and "Return" button */
 .result-box .btn {
   margin-top: 10px;
   margin-right: 30px;

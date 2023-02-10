@@ -1,3 +1,4 @@
+/* Hide vertical scrollbar */
 html {
   overflow-x: hidden;
   scrollbar-width: none;
@@ -8,6 +9,7 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+/* Set navigation bar font, and padding, align text center, set margin below the bar, and bring the bar forward */
 nav {
   padding: 10px;
   text-align: center;
@@ -18,13 +20,14 @@ nav {
   z-index: 4;
 }
 
+/* Set margin above footer, set footer width to cover the full width and bring forward the footer */
 footer {
   margin-top: 20px;
   width: 100%;
-  background-color: transparent;
   z-index: 4;
 }
 
+/* Position menu with navbar is collapsed and opened on smaller screens */
 .menuOpen {
   position: absolute;
   right: 0;
@@ -48,6 +51,7 @@ footer {
   
 }
 
+/* Set animation for loading logo */
 .floating {
   animation-name: floating;
   animation-duration: 3s;
@@ -70,10 +74,12 @@ footer {
   }
 }
 
+/* Set background for loader to block all content */
 #loader {
   background: white;
 }
 
+/* Style the navigation bar such that it flips over to show text on hover */
 .flip {
     transition: 0.8s;
     transform-style: preserve-3d;

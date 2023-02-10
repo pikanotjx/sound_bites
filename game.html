@@ -23,7 +23,7 @@
   </div>
 
   <div class="h-100 w-100 position-absolute top-0 left-0 d-flex flex-column justify-content-center align-items-center">
-    <div class="col-md-9 col-lg-6 col-xl-5 text-center p-4">
+    <div class="col-md-9 col-lg-6 col-xl-5 text-center">
       <img src="/src/logo/logo-2-black.svg" class="img-fluid floating logo" alt="SoundBites Logo" height="300" width="300">
 
 
@@ -69,11 +69,11 @@
         <button type="button" class="btn btn-lg" id="play-again">Play Again</button>
         <button type="button" class="btn btn-lg" id="return">Return</button>
       </div>
-            <!-- score updating notice -->
-            <div class="alert alert-success alert-dismissible fade" id="score-updated" role="alert">
-              <strong>Score updated!</strong> 
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+
+      <div class="alert alert-danger alert-dismissible fade w-100 my-3" id="score-update" role="alert">
+        <span><strong>Score is updating!</strong> Hang on!! </span>
+      </div>
+
     </div>
   </div>
 

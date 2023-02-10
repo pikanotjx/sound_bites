@@ -136,9 +136,9 @@ function setQuestion() {
             $(".correct-answers").html(correctAnswers);
             $(".total-question").html(songList.length);
             $(".time-taken").html((endTime - startTime) / 1000 + "s");
-            if (!dbDown) {
+            // if (!dbDown) {
                 saveScore();
-            }
+            // }
         }
     });
 }
@@ -151,7 +151,7 @@ function getRandomItem(arr) {
 // function to calculate score
 function calculateScore() {
   var timeTaken = (endTime - startTime) / 1000;
-  var score = Math.floor(((correctAnswers / songList.length) * 10000) / (timeTaken / songList.length));
+  var score = Math.floor((correctAnswers / songList.length) * (10000 / (timeTaken / songList.length)));
   return score;
 }
 
@@ -165,6 +165,9 @@ function shuffleSongs(array) {
 
 // function to save score to database
 function saveScore() {
+    // inform user that score is being saved
+    $("#score-update").addClass("show");
+
     var settings = {
         async: true,
         crossDomain: true,
@@ -181,10 +184,13 @@ function saveScore() {
         // sort accounts by high score
         accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
         for (let i = 0; i < accounts.length; i++) {
-          // update account page
+          // update local storage
+          accounts[i].LatestScore = calculateScore();
           if (accounts[i].Username === currentAccount.Username) {
+            // update high score
             if (calculateScore() > accounts[i].HighScore) {
               accounts[i].HighScore = calculateScore();
+              // update highest rank
               if (accounts[i].HighestRank > i + 1) {
                 accounts[i].HighestRank = i + 1;
               }
@@ -194,7 +200,7 @@ function saveScore() {
             var settings = {
                 async: true,
                 crossDomain: true,
-                url: "https://soundbites-31d5.restdb.io/rest/accounts/" + accounts[i]._id,
+                url: DBURL + "/" + accounts[i]._id,
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
@@ -205,9 +211,10 @@ function saveScore() {
                 data: JSON.stringify(accounts[i]),
             };
             $.ajax(settings).done(function (response) {
-                $("#score-update").addClass("show");
+                localStorage.setItem("currentAccount", JSON.stringify(accounts[i]));
+                $("#score-update").html("Score saved!");
+                $("#score-update").toggleClass("alert-success alert-danger");
             });
-
         }
     }
 });

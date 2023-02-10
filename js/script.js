@@ -31,7 +31,6 @@ $(document).ready(function () {
     $(".account-nav").attr("href", "/login.html");
   } else {
     currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
-    console.log(currentAccount)
   }
 });
 

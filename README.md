@@ -86,4 +86,4 @@ All songs used belong to their respective owners. Any owners who wish to have th
 All images used belong to their respective ownwers. All images were retrieved online from public sources. Any owners who wish to have their images removed may contact us at [hello@kwokjingxuan.me](mailto:hello@kwokjingxuan.me). 
 
 ### GitHub
-Link to GitHub page:https://github.com/pikanotjx/sound_bites
+Link to GitHub page: https://github.com/pikanotjx/sound_bites

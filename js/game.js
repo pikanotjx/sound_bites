@@ -56,13 +56,14 @@ async function setAvailableSongs() {
         download: true,
         header: true,
         complete: function (results) {
+            // add songs to songList and allSongs
             for (let i=0; i<results.data.length; i++){
                 songList.push(results.data[i]);
                 allSongs.push(results.data[i]);
             }
             // shuffle songs
-            songList = shuffleSongs(songList);
-            // shwo number of questions
+            shuffleSongs(songList);
+            // show number of questions
             $(".total-questions").html(songList.length);
         },
     });
@@ -86,7 +87,7 @@ function setQuestion() {
         }
     }
     // shuffle options (if not anwer will always be first option)
-    options = shuffleSongs(options);
+    shuffleSongs(options);
     // display options
     for (let i=0; i<options.length; i++) {
         const option = document.createElement("div");
@@ -105,6 +106,12 @@ function setQuestion() {
         } else {
             // if incorrect, change background color to red
             $(this).css("background-color", "red");
+            for (let i=0; i<$(".option").length; i++) {
+                // change background color of correct answer to green
+                if ($(".option")[i].innerHTML == songName) {
+                    $(".option")[i].style.backgroundColor = "green";
+                }
+            }
         }
         // increment song counter and check if there are more songs
         songCounter ++;
@@ -120,6 +127,7 @@ function setQuestion() {
         }
         else {
             // if no more songs, stop song, hide quiz box and show result box
+            audio.pause();
             endTime = new Date();
             $(".quiz-box").addClass("hide");
             $(".result-box").removeClass("hide");
@@ -148,8 +156,11 @@ function calculateScore() {
 }
 
 // function to shuffle array
-function shuffleSongs(arr) {
-    return arr.sort((a, b) => 0.5 - Math.random());
+function shuffleSongs(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
 }
 
 // function to save score to database

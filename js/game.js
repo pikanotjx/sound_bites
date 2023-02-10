@@ -14,10 +14,10 @@ var dbDown = false;
 // when document is ready
 $(document).ready(function () {
     // check if user is logged in
-    if (!("currentAccount" in localStorage)) {
+    if (currentAccount === null || currentAccount === undefined || currentAccount === "" || currentAccount === JSON.stringify()) {
         // if not logged in, warn user that score will not be saved
-        $(".db-down").html("<strong>No account!</strong> Please <a href=\"login.html\">login</a> to save your score.");
-        $(".db-down").show();
+        $("#db-down span").html("<strong>No account!</strong> Please <a href=\"login.html\">login</a> to save your score.");
+        $("#db-down").show();
         dbDown = true;
     }
 

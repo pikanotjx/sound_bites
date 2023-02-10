@@ -1,6 +1,6 @@
 const APIKEY = "63e5e85f478852088da67fdb";
 const DBURL = "https://soundbites-31d5.restdb.io/rest/accounts";
-var currentAccount;
+var currentAccount = null;
 
 $("#db-down").hide();
 
@@ -73,6 +73,7 @@ $("#register-account").on("click", function () {
 
   // check if username and password are filled in
   if (username === "" || password === "") {
+    $("#form-loading").css("display", "none");
     $("#login-notice").html("Please fill in all fields");
     $("#register-account").attr("disabled", false);
   }
@@ -95,6 +96,7 @@ $("#register-account").on("click", function () {
       if (username === account.Username) {
         $("#login-notice").html("Username already taken");
         $("#register-account").attr("disabled", false);
+        $("#form-loading").css("display", "none");
         return;
       }
     }
@@ -126,7 +128,7 @@ $("#register-account").on("click", function () {
     currentAccount = response;
     localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
     // redirect to index page
-    window.location.href = "index.html";
+    window.location.href = "account.html";
   });
 });
 
@@ -149,6 +151,7 @@ $("#login-account").on("click", function () {
   if (username === "" || password === "") {
     $("#login-notice").html("Please fill in all fields");
     $("#login-account").attr("disabled", false);
+    $("#form-loading").css("display", "none");
     return;
   }
 
@@ -184,12 +187,14 @@ $("#login-account").on("click", function () {
           return;
         } else {
           // if password is incorrect
+          $("#form-loading").css("display", "none");
           $("#login-notice").html("Incorrect Password");
           $("#login-account").attr("disabled", false);
           return;
         }
       } else {
         // if username is incorrect
+        $("#form-loading").css("display", "none");
         $("#login-notice").html("Username not found");
         $("#login-account").attr("disabled", false);
         return;
@@ -230,13 +235,16 @@ function getDatabase() {
     accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
     for (let i = 0; i < accounts.length; i++) {
       // update account page
-      if (accounts[i].Username === currentAccount.Username) {
-        $("#username").html(accounts[i].Username);
-        $("#highest-rank").html(accounts[i].HighestRank);
-        $("#highest-score").html(accounts[i].HighScore);
-        $("#latest-score").html(accounts[i].LatestScore);
-        $("#rank").html(i + 1);
+      if (currentAccount !== null) {
+        if (accounts[i].Username === currentAccount.Username) {
+          $("#username").html(accounts[i].Username);
+          $("#highest-rank").html(accounts[i].HighestRank);
+          $("#highest-score").html(accounts[i].HighScore);
+          $("#latest-score").html(accounts[i].LatestScore);
+          $("#rank").html(i + 1);
+        }
       }
+
       // append account to leaderboard
       $("#leaderboard").append(
         `<tr>

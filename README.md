@@ -73,6 +73,7 @@ With SoundBites, music fans can put their knowledge to the test and compete agai
 
 - When navigation bar is collapsed, and opened, the words are cut off. 
 - When navigation bar is open and the window is expanded horizontally, formatting of the navigation bar will be weird until the page is refreshed.
+- Bootstrap CDN cannot be used when connected to the Ngee Ann Polytechnic network. Connection to the CDN is however restored when using other networks. 
 
 ## Credits
 

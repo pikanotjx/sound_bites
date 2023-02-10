@@ -1,15 +1,34 @@
-const APIKEY = "63df95363bc6b255ed0c46aa";
-const DBLINK = "https://soundbites-31d5.restdb.io/rest/accounts";
+const APIKEY = "63e5e85f478852088da67fdb";
 var currentAccount;
 
-// check if database can be reached
-try {
-  $ajax({ url: DBLINK });
-} catch (error) {
-  $("#db-down").addClass("show");
-  $("#login-account").attr("disabled", "true");
-  $("#register-account").attr("disabled", "true");
-}
+$("#db-down").hide();
+
+// check if link can be accessed
+$.ajax({
+  url: "https://soundbites-31d5.restdb.io/rest/accounts",
+  headers: {
+    "content-type": "application/json",
+    "x-apikey": APIKEY,
+    "cache-control": "no-cache",
+  },
+  success: function() {
+    getDatabase();
+  },
+  error: function () {
+    $("#db-down").show();
+    $("#db-down").addClass("show");
+    $("#login-account").attr("disabled", "true");
+    $("#register-account").attr("disabled", "true");
+  },
+  });
+
+$(document).ready(function () {
+  // check if local storage has current account
+  currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
+  if (currentAccount == null) {
+    $(".account-nav").attr("href", "/login.html");
+  }
+});
 
 document.onreadystatechange = function () {
   if (document.readyState !== "complete") {
@@ -22,30 +41,15 @@ document.onreadystatechange = function () {
 };
 
 // navigation bar - show menu on click
-$("#menu-button").on("mouseenter", function (event) {
+$("#menu-button").on("click", function (event) {
   $("#navbarSupportedContent").toggleClass("show menuOpen");
 });
-
-if ($("#navbarSupportedContent").hasClass("menuOpen")) {
-  $("#navbarSupportedContent").on("mouseleave", function (event) {
-    $("#navbarSupportedContent").toggleClass("show menuOpen");
-  });
-}
 
 // get artist to play
 $(".play-btn").on("click", function () {
   artist = $(this).attr("id");
   localStorage.setItem("artist", artist);
   window.location.href = "game.html";
-});
-
-$(document).ready(function () {
-  // check if local storage has current account
-  currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
-  if (currentAccount == null) {
-    $(".account-nav").attr("href", "/login.html");
-    $(".play-nav").attr("href", "/login.html");
-  }
 });
 
 // register new account
@@ -70,7 +74,7 @@ $("#register-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: DBLINK,
+    url: "https://soundbites-31d5.restdb.io/rest/accounts",
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -99,7 +103,7 @@ $("#register-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: DBLINK,
+    url: "https://soundbites-31d5.restdb.io/rest/accounts",
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -142,7 +146,7 @@ $("#login-account").on("click", function () {
   var settings = {
     async: true,
     crossDomain: true,
-    url: DBLINK,
+    url: "https://soundbites-31d5.restdb.io/rest/accounts",
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -199,7 +203,7 @@ function getDatabase() {
   var settings = {
     async: true,
     crossDomain: true,
-    url: DBLINK,
+    url: "https://soundbites-31d5.restdb.io/rest/accounts",
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -209,10 +213,6 @@ function getDatabase() {
   };
 
   $.ajax(settings).done(function (accounts) {
-    if (response === 0) {
-      $("#db-down").addClass("show");
-      dbDown = true;
-    }
     // sort accounts by high score
     accounts.sort((a, b) => (a.HighScore < b.HighScore ? 1 : -1));
     for (let i = 0; i < accounts.length; i++) {

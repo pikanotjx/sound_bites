@@ -1,6 +1,7 @@
 var artist = localStorage.getItem("artist");
-
 const optionContainer = $(".option-container");
+var currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
+
 var songCounter = 0;
 let correctAnswers = 0;
 let currentSong;
@@ -11,6 +12,10 @@ var endTime;
 var dbDown = false;
 
 $(document).ready(function () {
+    if (!("currentAccount" in localStorage)) {
+        $(".db-down").html("<strong>No account!</strong> Please <a href=\"login.html\">login</a> to save your score.");
+        $(".db-down").show();
+    }
     $("#artist-name").html(artist.split("_").join(" "));
     setAvailableSongs()
         .then(() => {
@@ -116,7 +121,7 @@ function saveScore() {
     var settings = {
         async: true,
         crossDomain: true,
-        url: DBLINK,
+        url: "https://soundbites-31d5.restdb.io/rest/accounts",
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -142,7 +147,7 @@ function saveScore() {
             var settings = {
                 async: true,
                 crossDomain: true,
-                url: DBLINK + accounts[i]._id,
+                url: "https://soundbites-31d5.restdb.io/rest/accounts/" + accounts[i]._id,
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
